@@ -1,0 +1,19 @@
+{
+  "name": "task1",
+  "private": true,
+  "version": "1.0.0",
+  "description": "thrift server",
+  "main": "server.js",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "fetch": "^1.1.0",
+    "thrift": "^0.11.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Alexey Levin",
+  "license": "ISC"
+}
