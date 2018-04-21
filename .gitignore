@@ -1,3 +1,5 @@
 gen-py/
 gen-nodejs/
 node_modules/
+venv/
+/task4-spark/opencorpora_json
