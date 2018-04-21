@@ -1,3 +1,5 @@
+#!/usr/bin/node
+
 const http = require("http");
 const thrift = require("thrift");
 const MetaScrapper = require("./gen-nodejs/MetaScrapper");

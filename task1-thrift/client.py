@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import sys
 import glob
 import math
@@ -58,11 +60,11 @@ def main():
         url = DEFAULT_URL
 
     try:
-		  meta = client.extractMetaFromUrl(url)
-		  print(metaToString(meta))
+      meta = client.extractMetaFromUrl(url)
+      print(metaToString(meta))
 		  
     except InvalidUrl as e:
-	  	print('Couldn\'t load website with url ' + e.url + (('. Error message is:\n' + e.message) if e.message else ''))
+      print('Couldn\'t load website with url ' + e.url + (('. Error message is:\n' + e.message) if e.message else ''))
     except NoMetadata:
 	    print('Website ' + url + ' doesn\'t have any OG metadata')
     except InvalidMetadata as e:
