@@ -278,6 +278,21 @@
               "required": ["message"]
             }
           },
+          "404": {
+            "description": "Can't find poll with given id",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Can't find poll with given id"
+                }
+              },
+              "required": [
+                "message"
+              ]
+            }
+          },
           "default": {
             "$ref": "responses.json#/DefaultError"
           }
@@ -319,6 +334,21 @@
                 }
               },
               "required": ["message"]
+            }
+          },
+          "404": {
+            "description": "Can't find poll with given id",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Can't find poll with given id"
+                }
+              },
+              "required": [
+                "message"
+              ]
             }
           },
           "default": {
