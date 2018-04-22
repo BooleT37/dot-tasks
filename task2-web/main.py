@@ -1,5 +1,7 @@
 from flask import Flask, send_from_directory, send_file
 
+from api import setup_api
+
 app = Flask(__name__)
 
 
@@ -17,5 +19,7 @@ def send_swagger_json(path):
 def swagger():
     return send_file('./static/swagger.html')
 
+
+setup_api(app)
 
 app.run(debug=True, use_debugger=False, use_reloader=False)
