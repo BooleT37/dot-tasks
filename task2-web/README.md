@@ -7,5 +7,5 @@
 3. Launch server: python3 main.py
 
 ### Use guide:
-* To view swagger specs go to [http://127.0.0.1:5000/swagger](http://127.0.0.1:5000/swagger]) in your favourite browser
+* To view swagger specs go to [http://127.0.0.1:5000/swagger](http://127.0.0.1:5000/swagger) in your favourite browser
 * Then you can "Try it out" every method in spec! 
