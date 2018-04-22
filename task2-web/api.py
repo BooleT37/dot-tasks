@@ -107,6 +107,9 @@ def setup_api(app):
         if user in polls[poll_id]["voters"]:
             raise Forbidden("You have already voted in this poll!")
 
+        if json["option"] not in polls[poll_id]["results"]:
+            raise Forbidden("Incorrect vote option '" + json["option"] + "'")
+
         polls[poll_id]["results"][json["option"]] += 1
         polls[poll_id]["voters"].append(user)
 
