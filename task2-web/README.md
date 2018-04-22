@@ -1,6 +1,6 @@
 # Task 2. Web
 
-###Launch guide:
+### Launch guide:
 1. Setup virtualenv
 1. Install dependencies:<br/>
 `$ pip3 install -r requirements.txt`

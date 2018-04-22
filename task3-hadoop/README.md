@@ -1,6 +1,6 @@
 # Task 3. Hadoop
 
-###Launch:
+### Launch:
 1. Set hadoop path to $HADOOP<br/>
 `$ HADOOP=/usr/local/hadoop/`
 

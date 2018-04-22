@@ -1,6 +1,6 @@
 # Task 6. ZeroMQ
 
-###Launch guide:
+### Launch guide:
 1. Setup virtualenv
 1. Grant execution rights to every *.py file
 1. Launch broker<br/>
