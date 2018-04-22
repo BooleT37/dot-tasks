@@ -3,4 +3,5 @@ gen-nodejs/
 node_modules/
 venv/
 .idea
+__pycache__
 /task4-spark/opencorpora_json
