@@ -1,0 +1,13 @@
+{
+  "title": "Default error model",
+  "type": "object",
+  "properties": {
+    "message": {
+      "type": "string",
+      "example": "An unexpected error has occured"
+    }
+  },
+  "required": [
+    "message"
+  ]
+}

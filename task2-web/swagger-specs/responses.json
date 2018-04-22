@@ -1,0 +1,8 @@
+{
+  "DefaultError": {
+    "schema": {
+      "$ref": "definitions/DefaultErrorModel.json"
+    },
+    "description": "Any unexpected error"
+  }
+}

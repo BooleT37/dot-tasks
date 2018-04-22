@@ -1,0 +1,331 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Polls REST API specifications",
+    "version": "0.0.1",
+    "title": "Polls REST API specs",
+    "termsOfService": "http://swagger.io/terms/"
+  },
+  "basePath": "/api",
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "tags": [
+    {
+      "name": "Voters",
+      "description": "Voters operations"
+    },
+    {
+      "name": "Polls",
+      "description": "Polls operations"
+    }
+  ],
+  "paths": {
+    "/voters": {
+      "post": {
+        "summary": "Register a new voter",
+        "description": "Register a new voter",
+        "tags": [
+          "Voters"
+        ],
+        "parameters": [
+          {
+            "name": "model",
+            "in": "body",
+            "description": "Voter info",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "title": "Voter name",
+                  "type": "string",
+                  "description": "Voter name"
+                }
+              },
+              "required": ["name"]
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Response model",
+            "headers": {
+              "ETag": {
+                "type": "string",
+                "description": "Created user id",
+                "example": "1"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid JSON body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "JSON input is invalid"
+                }
+              },
+              "required": ["message"]
+            }
+          },
+          "403": {
+            "description": "User with this name already exists",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "User with this name already exists"
+                }
+              },
+              "required": ["message"]
+            }
+          },
+          "default": {
+            "$ref": "responses.json#/DefaultError"
+          }
+        }
+      }
+    },
+    "/polls/{id}": {
+      "get": {
+        "summary": "Get poll options",
+        "description": "Get poll options",
+        "tags": [
+          "Polls"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Poll id",
+            "schema": {
+              "type": "number",
+              "default": 1,
+              "example": 1
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Poll model",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "example": {
+                "0": "apples",
+                "1": "oranges",
+                "2": "pears"
+              }
+            }
+          },
+          "404": {
+            "description": "Can't find poll with given id",
+            "schema": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Can't find poll with given id"
+                  }
+                },
+                "required": [
+                  "message"
+                ]
+              }
+            }
+          },
+          "default": {
+            "$ref": "responses.json#/DefaultError"
+          }
+        }
+      }
+    },
+    "/polls/{id}/results": {
+      "get": {
+        "summary": "Get poll results",
+        "description": "Get poll results",
+        "tags": [
+          "Polls"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Poll id",
+            "schema": {
+              "type": "number",
+              "default": 1,
+              "example": 1
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Poll model",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "number"
+              },
+              "example": {
+                "0": 5,
+                "1": 12,
+                "2": 0
+              }
+            }
+          },
+          "404": {
+            "description": "Can't find poll with given id",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Can't find poll with given id"
+                }
+              },
+              "required": [
+                "message"
+              ]
+            }
+          },
+          "default": {
+            "$ref": "responses.json#/DefaultError"
+          }
+        }
+      }
+    },
+    "/polls/{id}/vote": {
+      "patch": {
+        "summary": "Vote in poll",
+        "description": "Register a new voter",
+        "tags": [
+          "Polls"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Poll id",
+            "schema": {
+              "type": "number",
+              "default": 1,
+              "example": 1
+            },
+            "required": true
+          },
+          {
+            "name": "model",
+            "in": "body",
+            "description": "Vote model",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "option": {
+                  "title": "Option",
+                  "type": "string",
+                  "description": "Vote option key"
+                }
+              },
+              "required": ["option"]
+          },
+          "required": true
+        }],
+        "responses": {
+          "204": {
+            "description": "Vote counted and recorded"
+          },
+          "400": {
+            "description": "Invalid JSON body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "JSON input is invalid"
+                }
+              },
+              "required": [
+                "message"
+              ]
+            }
+          },
+          "403": {
+            "description": "You have already voted in this poll or poll is closed",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "You have already voted in this poll"
+                }
+              },
+              "required": ["message"]
+            }
+          },
+          "default": {
+            "$ref": "responses.json#/DefaultError"
+          }
+        }
+      }
+    },
+    "/polls/{id}/close": {
+      "patch": {
+        "summary": "Close the poll",
+        "description": "Close the poll",
+        "tags": [
+          "Polls"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Poll id",
+            "schema": {
+              "type": "number",
+              "default": 1,
+              "example": 1
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Poll closed"
+          },
+          "403": {
+            "description": "Poll is already closed",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Poll is already closed"
+                }
+              },
+              "required": ["message"]
+            }
+          },
+          "default": {
+            "$ref": "responses.json#/DefaultError"
+          }
+        }
+      }
+    }
+  }
+}
