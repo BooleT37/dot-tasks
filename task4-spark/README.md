@@ -9,9 +9,9 @@
 1. (optional) setup [virtualenv](https://virtualenv.pypa.io/en/stable/installation/). I was using it, so every python file is prefixed with #!/venv/bin/python3 for you to execute it directly. Don't forget to grant execution rights though!
 1. Install python dependencies:<br/>
 `$ pip3 install -r requirements.txt`
-- Export evnironmental variable needed for spark:<br/>`$ export PYSPARK_PYTHON=python3`
-- Dump texts to JSON files (with count for every word in file):<br/>
+1. Export evnironmental variable needed for spark:<br/>`$ export PYSPARK_PYTHON=python3`
+1. Dump texts to JSON files (with count for every word in file):<br/>
 `$ python3 preprocessing.py`
 
-- Launch search application:<br/>
+1. Launch search application:<br/>
 `$ python3 mb25.py "Любовный роман"`
